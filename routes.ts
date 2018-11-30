@@ -1,6 +1,6 @@
 import * as b from "bobril";
 import { Main } from "./pages/main";
-import { personReportBobx } from "./pages/table/tableReport";
+import { personReportBobx } from "./pages/firstTable/table";
 
 export const mainPage: b.IRoute = { handler: Main };
 

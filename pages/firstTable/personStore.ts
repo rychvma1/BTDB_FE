@@ -8,7 +8,7 @@ export enum Gender {
   female = 1
 }
 
-export class Person {
+export class PersonDto {
   id: string;
   name: string;
   age: number;
@@ -25,10 +25,10 @@ export class Person {
 
 export class PersonStore extends b.BobrilCtx<undefined> {
   @observable
-  person = new Person("", "", 0, 0);
+  person = new PersonDto("", "", 0, 0);
 
   @observable
-  private _personsList: Person[] = [];
+  private _personsList: PersonDto[] = [];
 
   @observable
   _alertState: number | null = null;

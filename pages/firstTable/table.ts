@@ -1,6 +1,6 @@
 import * as b from "bobril";
 import * as bs from "bobrilstrap";
-import { PersonStore } from "./customObj";
+import { PersonStore } from "./personStore";
 
 export const personReportBobx = b.createComponent({
   id: "sample-personReport-bobx",
@@ -9,22 +9,6 @@ export const personReportBobx = b.createComponent({
     //debugger;
     //personStore.getPersons();
     me.children = [
-      ctx.alertState &&
-        bs.Alert({
-          context: bs.AlertContext.Info,
-          dismissButton: {
-            aria: { label: "Close" },
-            onClick: () => {
-              ctx.alertState = null;
-            }
-          },
-          onClosed: () => alert("Closed"),
-          children: `Id: ${ctx.persons[ctx.alertState].id} ,Name: ${
-            ctx.persons[ctx.alertState].name
-          } ,Age: ${ctx.persons[ctx.alertState].age} ,Gender: ${
-            ctx.persons[ctx.alertState].genderStr
-          }`
-        }),
       bs.Table({ condensed: true }, [
         bs.THead(
           {},
@@ -58,7 +42,21 @@ export const personReportBobx = b.createComponent({
             ])
           )
         )
-      ])
+      ]),ctx.alertState && bs.Alert({
+            context: bs.AlertContext.Info,
+            dismissButton: {
+                aria: { label: "Close" },
+                onClick: () => {
+                    ctx.alertState = null;
+                }
+            },
+            onClosed: () => alert("Closed"),
+            children: `Id: ${ctx.persons[ctx.alertState].id} ,Name: ${
+                ctx.persons[ctx.alertState].name
+                } ,Age: ${ctx.persons[ctx.alertState].age} ,Gender: ${
+                ctx.persons[ctx.alertState].genderStr
+                }`
+        })
     ];
   }
 });
